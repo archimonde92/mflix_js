@@ -116,7 +116,7 @@ export default class MoviesDAO {
 
     // TODO Ticket: Text and Subfield Search
     // Construct a query that will search for the chosen genre.
-    const query = { genre: { $in: searchGenre } }
+    const query = { genres: { $in: searchGenre } }
     const project = {}
     const sort = DEFAULT_SORT
 
