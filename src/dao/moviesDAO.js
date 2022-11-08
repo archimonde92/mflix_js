@@ -176,9 +176,9 @@ export default class MoviesDAO {
               title: "$title",
             },
           },
+          skipStage,
+          limitStage,
         ],
-        skipStage,
-        limitStage,
       },
     }
 
