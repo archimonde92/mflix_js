@@ -176,8 +176,7 @@ export default class MoviesDAO {
               title: "$title",
             },
           },
-          skipStage,
-          limitStage,
+       
         ],
       },
     }
@@ -198,6 +197,8 @@ export default class MoviesDAO {
       sortStage,
       // TODO Ticket: Faceted Search
       // Add the stages to queryPipeline in the correct order.
+      skipStage,
+      limitStage,
       facetStage,
     ]
 
