@@ -175,10 +175,10 @@ export default class MoviesDAO {
             $addFields: {
               title: "$title",
             },
-            skipStage,
-            limitStage,
           },
         ],
+        skipStage,
+        limitStage,
       },
     }
 
