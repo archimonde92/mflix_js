@@ -203,7 +203,9 @@ export default class MoviesDAO {
 
     try {
       const results = await (await movies.aggregate(queryPipeline)).next()
+      console.log({results})
       const count = await (await movies.aggregate(countingPipeline)).next()
+      console.log({count})
       return {
         ...results,
         ...count,
