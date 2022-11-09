@@ -45,7 +45,7 @@ export default class CommentsDAO {
     try {
       // TODO Ticket: Create/Update Comments
       // Construct the comment document to be inserted into MongoDB.
-      const commentDoc = { name: user.name, email: user.name, movie_id: new ObjectId(movieId), text: comment, date }
+      const commentDoc = { name: user.name, email: user.name, movie_id: ObjectId(movieId), text: comment, date }
 
       return await comments.insertOne(commentDoc)
     } catch (e) {
@@ -72,7 +72,7 @@ export default class CommentsDAO {
       const updateResponse = await comments.updateOne(
         {
           email: userEmail,
-          _id: new ObjectId(commentId)
+          _id:ObjectId(commentId)
         },
         { $set: { text, date } },
       )
