@@ -176,7 +176,7 @@ export default class MoviesDAO {
               title: "$title",
             },
           },
-       
+
         ],
       },
     }
@@ -204,9 +204,9 @@ export default class MoviesDAO {
 
     try {
       const results = await (await movies.aggregate(queryPipeline)).next()
-      console.log({results})
+      console.log({ results })
       const count = await (await movies.aggregate(countingPipeline)).next()
-      console.log({count})
+      console.log({ count })
       return {
         ...results,
         ...count,
@@ -265,7 +265,7 @@ export default class MoviesDAO {
 
     // TODO Ticket: Paging
     // Use the cursor to only return the movies that belong on the current page
-    const displayCursor = cursor.limit(moviesPerPage).skip(page*moviesPerPage)
+    const displayCursor = cursor.limit(moviesPerPage).skip(page * moviesPerPage)
 
     try {
       const moviesList = await displayCursor.toArray()
@@ -303,6 +303,14 @@ export default class MoviesDAO {
         {
           $match: {
             _id: ObjectId(id)
+          }
+        },
+        {
+          $lookup: {
+            from: "comments",
+            localField: "_id",
+            foreignField: "movie_id",
+            as: "comments"
           }
         }
       ]
