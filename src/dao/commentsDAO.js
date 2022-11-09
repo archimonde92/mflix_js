@@ -66,6 +66,7 @@ export default class CommentsDAO {
    */
   static async updateComment(commentId, userEmail, text, date) {
     try {
+      console.log({commentId, userEmail, text, date})
       // TODO Ticket: Create/Update Comments
       // Use the commentId and userEmail to select the proper comment, then
       // update the "text" and "date" fields of the selected comment.
@@ -78,7 +79,7 @@ export default class CommentsDAO {
         filter,
         update
       )
-
+        console.log({updateResponse})
       return updateResponse
     } catch (e) {
       console.error(`Unable to update comment: ${e}`)
