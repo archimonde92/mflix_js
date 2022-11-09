@@ -69,12 +69,14 @@ export default class CommentsDAO {
       // TODO Ticket: Create/Update Comments
       // Use the commentId and userEmail to select the proper comment, then
       // update the "text" and "date" fields of the selected comment.
+      const filter = {
+        email: userEmail,
+        _id: commentId
+      }
+      const update =  { $set: { text, date } }
       const updateResponse = await comments.updateOne(
-        {
-          email: userEmail,
-          _id:ObjectId(commentId)
-        },
-        { $set: { text, date } },
+        filter,
+        update
       )
 
       return updateResponse
