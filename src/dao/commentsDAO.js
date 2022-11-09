@@ -72,7 +72,7 @@ export default class CommentsDAO {
       // update the "text" and "date" fields of the selected comment.
       const filter = {
         email: userEmail,
-        _id: commentId
+        _id: ObjectId(commentId)
       }
       const update =  { $set: { text, date } }
       const updateResponse = await comments.updateOne(
