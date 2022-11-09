@@ -323,7 +323,7 @@ export default class MoviesDAO {
               },
               {
                 $sort: {
-                  date: 1
+                  date: -1
                 }
               }
             ],
