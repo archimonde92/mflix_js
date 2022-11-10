@@ -66,7 +66,7 @@ export default class CommentsDAO {
    */
   static async updateComment(commentId, userEmail, text, date) {
     try {
-      console.log({commentId, userEmail, text, date})
+      console.log({ commentId, userEmail, text, date })
       // TODO Ticket: Create/Update Comments
       // Use the commentId and userEmail to select the proper comment, then
       // update the "text" and "date" fields of the selected comment.
@@ -74,12 +74,12 @@ export default class CommentsDAO {
         email: userEmail,
         _id: ObjectId(commentId)
       }
-      const update =  { $set: { text, date } }
+      const update = { $set: { text, date } }
       const updateResponse = await comments.updateOne(
         filter,
         update
       )
-        console.log({updateResponse})
+      console.log({ updateResponse })
       return updateResponse
     } catch (e) {
       console.error(`Unable to update comment: ${e}`)
@@ -102,6 +102,7 @@ export default class CommentsDAO {
       // Use the userEmail and commentId to delete the proper comment.
       const deleteResponse = await comments.deleteOne({
         _id: ObjectId(commentId),
+        email: userEmail
       })
 
       return deleteResponse
