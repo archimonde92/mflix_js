@@ -133,7 +133,7 @@ export default class CommentsDAO {
       const aggregateResult = await comments.aggregate(pipeline, {
         readConcern,
       }).toArray()
-      console.log({ aggregateResult: aggregateResult.lengh })
+      console.log({ aggregateResult: aggregateResult.length })
       return aggregateResult
     } catch (e) {
       console.error(`Unable to retrieve most active commenters: ${e}`)
